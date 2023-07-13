@@ -12,6 +12,7 @@
 body {
     /* margin: 0 auto; */
     padding-bottom: 30px;
+    background: rgba(255, 255, 0, 0.3);
 }
 
 h1 {
@@ -233,6 +234,7 @@ header {
 }
 
 .advantage {
+    background: rgb(255, 0, 0, 0.5);
     width: 30%;
     height: 200px;
     display: flex;
@@ -609,14 +611,15 @@ header {
     max-height: 1000px;
     display: flex;
     height: 40px;
-    background: bisque;
+    background: rgb(255, 0, 0, 0.5);
     border-radius: 50px;
     max-height: 0;
     transition: all 0.3s ease;
     transform-origin: top;
     align-items: center;
     justify-content: flex-start;
-    padding: 10px;
+    padding: 20px;
+    margin-bottom: 5px;
     /* Задайте достаточно большую высоту для раскрытия спойлера */
 }
 
@@ -650,6 +653,7 @@ header {
 
     .slider-nav__item {
         height: 150px;
+        max-width: 175px;
     }
 
     @media (max-width: 480px) {

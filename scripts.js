@@ -90,7 +90,6 @@ $(document).ready(function () {
     asNavFor: '.slider-for',
     centerMode: true,
     focusOnSelect: true,
-    adaptiveHeight: true,
     asNavFor: '.slider',
     responsive: [
       {
