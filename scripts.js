@@ -139,13 +139,22 @@ window.addEventListener('scroll', function () {
 
 var spoilers = document.getElementsByClassName('spoiler');
 
-Array.from(spoilers).forEach(function(spoiler) {
+Array.from(spoilers).forEach(function (spoiler) {
   var header = spoiler.querySelector('.spoiler-header');
   var content = spoiler.querySelector('.spoiler-content');
 
-  header.addEventListener('click', function() {
+  header.addEventListener('click', function () {
     spoiler.classList.toggle('active');
   });
+});
+
+// скейтбордист
+
+window.addEventListener('scroll', function () {
+  var circle = document.querySelector('.circle');
+  var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+  var moveDistance = scrollPercentage * (window.innerWidth - circle.offsetWidth);
+  circle.style.transform = 'translateX(' + moveDistance + 'px)';
 });
 
 

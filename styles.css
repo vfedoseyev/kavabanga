@@ -11,7 +11,7 @@
 
 body {
     /* margin: 0 auto; */
-    padding-bottom: 30px;
+    padding-bottom: 100px;
     background: rgba(255, 255, 0, 0.3);
 }
 
@@ -271,7 +271,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    background-color: #fff;
+    background-color: rgb(111, 180, 49, 0.89);
     padding: 20px;
     box-shadow: 0 2px 20px 12px rgba(0, 0, 0, 0.2);
     opacity: 0;
@@ -356,7 +356,7 @@ header {
     transition: all ease 0.2s;
     color: #fff;
     border-radius: 20px;
-    background-color: rgb(174, 53, 53);
+    background-color: rgba(255, 255, 0, 0.3);
     padding: 5px;
 }
 
@@ -364,8 +364,8 @@ header {
     color: black;
     position: relative;
     transform: scale(1.1);
-    background-color: rgb(200, 204, 224);
-    border: 2px solid rgb(174, 53, 53);
+    background-color: rgb(255, 0, 0, 0.5);
+    border: 2px solid white;
 }
 
 /* слайдер сотрудников */
@@ -385,7 +385,9 @@ header {
 }
 
 /* Слайдер запущен */
-.slick-slider.slick-initialized {}
+.slick-slider.slick-initialized {
+    z-index: 0;
+}
 
 /* Слайдер с точками */
 .slick-slider.slick-dotted {}
@@ -432,11 +434,14 @@ header {
     background: url(img/arrow.png)0 0 / 100% no-repeat;
     transform: rotate(180deg);
     border: none;
+    cursor: pointer;
+
 
 }
 
 /* Стрелка вправо */
 .slick-arrow.slick-next {
+    cursor: pointer;
     right: 0;
     background: url(img/arrow.png)0 0 / 100%no-repeat;
     border: none;
@@ -478,7 +483,7 @@ header {
     margin-top: 70px;
 }
 
-.slider-nav__item {
+.slider-nav .slider__item {
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -587,15 +592,17 @@ header {
 
 
 /* блой FAQ */
-.faq{
+.faq {
     margin-top: 100px;
 }
+
 .spoiler-header {
     border-top: 2px solid black;
     cursor: pointer;
     padding: 20px;
     transition: all 0.3s ease;
 }
+
 .spoiler:last-child {
     border-bottom: 2px solid black;
 }
@@ -621,6 +628,40 @@ header {
     padding: 20px;
     margin-bottom: 5px;
     /* Задайте достаточно большую высоту для раскрытия спойлера */
+}
+
+/* скейтбордист */
+
+.circle {
+    bottom: 0;
+    position: fixed;
+    width: 150px;
+    height: 109px;
+    background-image: url(img/tmnt-car2.png);
+    background-size: cover;
+    transition: transform 0.3s ease;
+}
+
+
+/* мобильное меню  */
+.mobile-menu {
+    border-top: 2px solid black;
+    display: none;
+    background-color: rgb(111 180 49 / 89%);
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.mobile-menu-btn {
+    font-size: 14px;
+    border: none;
+    background: none;
+    color: #fff;
 }
 
 /* медиа запросы */
@@ -657,6 +698,12 @@ header {
     }
 
     @media (max-width: 480px) {
+        .mobile-menu{
+            display: flex;
+        }
+        .circle{
+            bottom: 40px;
+        }
         .advantage {
             width: 100%;
         }
