@@ -95,6 +95,13 @@ header {
     width: 100%;
 }
 
+.main-header_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 190px;
+}
+
 .body-scroll {
     padding-top: 97px;
 }
@@ -291,7 +298,16 @@ header {
     border: none;
     cursor: pointer;
 }
-
+.popup{
+    display: none;
+    background: #000000ab;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
 .close-btn {
     position: relative;
     width: 30px;
@@ -597,6 +613,9 @@ header {
 }
 
 .spoiler-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-top: 2px solid black;
     cursor: pointer;
     padding: 20px;
@@ -628,15 +647,28 @@ header {
     padding: 20px;
     margin-bottom: 5px;
     /* Задайте достаточно большую высоту для раскрытия спойлера */
+
 }
+
+.spoilerHeader .spoiler_img {
+    transition: transform 0.3s;
+    /* Добавим плавность анимации */
+}
+
+.spoilerHeader .spoiler_img.flipped {
+    transform: rotate(180deg);
+    /* Поворот изображения на 180 градусов */
+}
+
+
 
 /* скейтбордист */
 
 .circle {
     bottom: 0;
     position: fixed;
-    width: 150px;
-    height: 109px;
+    width: 107px;
+    height: 90px;
     background-image: url(img/tmnt-car2.png);
     background-size: cover;
     transition: transform 0.3s ease;
@@ -658,11 +690,134 @@ header {
 }
 
 .mobile-menu-btn {
+    display: flex;
     font-size: 14px;
     border: none;
     background: none;
     color: #fff;
+    font-weight: 600;
+    flex-direction: column;
+    align-items: center;
 }
+
+.mobile-menu-btn img {
+    margin-bottom: 4px;
+}
+
+/* переключатель режима цветов */
+
+/* Стили для переключателя */
+.switch {
+    box-shadow: inset 0 0 6px 3px black;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    /* border: 2px solid black; */
+    border-radius: 17px;
+    overflow: hidden;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Круглый слайдер */
+.switch_slider {
+    position: absolute;
+    cursor: pointer;
+    top: 2px;
+    /* Небольшой отступ сверху для центрирования пиццы */
+    left: 2px;
+    /* Небольшой отступ слева для центрирования пиццы */
+    width: 30px;
+    /* Ширина слайдера */
+    height: 30px;
+    /* Высота слайдера */
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+    /* Создание круглой формы */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Изображение пиццы в слайдере */
+.pizza-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    /* Фоновый цвет для изображения пиццы */
+}
+
+
+/* Анимация вращения */
+@keyframes rotate360 {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(150deg);
+    }
+}
+
+/* Анимация вращения обратно */
+@keyframes reverse-rotate360 {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(-150deg);
+    }
+}
+
+/* Инвертированные цвета */
+.invert-colors {
+    filter: grayscale(1);
+}
+
+/* Класс для анимации вращения при активации переключателя */
+.rotate-image {
+    animation: rotate360 0.3s linear;
+}
+
+.reverse-rotate-image {
+    animation: reverse-rotate360 0.3s linear;
+}
+
+
+/* кнопка поиска */
+
+.search-button {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.search-input {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+}
+
+#searchInput {
+    border: none;
+    width: 200px;
+    outline: none;
+}
+
 
 /* медиа запросы */
 
@@ -674,6 +829,10 @@ header {
 }
 
 @media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+
     .advantage {
         width: 48%;
         margin-bottom: 30px;
@@ -698,14 +857,22 @@ header {
     }
 
     @media (max-width: 480px) {
-        .mobile-menu{
+        .mobile-menu {
             display: flex;
+            padding: 0 15px;
+            justify-content: space-around;
         }
-        .circle{
+
+        .circle {
             bottom: 40px;
         }
+
         .advantage {
             width: 100%;
+        }
+
+        .advantage:hover {
+            transform: scale(1.03);
         }
 
         .wrapper {

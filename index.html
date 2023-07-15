@@ -16,6 +16,10 @@
 </head>
 
 <body>
+
+    <div class="search-input" id="searchInputContainer">
+        <input type="text" placeholder="Введите запрос" id="searchInput">
+    </div>
     <header id="main-header">
         <div class="header_wrapper">
             <div class="logo">
@@ -27,23 +31,36 @@
                     <li><a href="#" class="request-btn">Заявка</a></li>
                 </ul>
             </nav>
-            <div class="popup-form">
-                <button class="close-btn"></button>
-                <h2>Заявка</h2>
-                <form class="form_inputs">
-                    <label for="name">Имя:</label>
-                    <input placeholder="Name" type="text" id="name" name="name" required>
-                    <label for="phone">Телефон:</label>
-                    <input placeholder="Number mz" type="tel" id="phone" name="phone" required>
-                    <button class="form_btn" type="submit">Отправить</button>
-                </form>
+            <div class="popup">
+                <div class="popup-form">
+                    <button class="close-btn"></button>
+                    <h2>Заявка</h2>
+                    <form class="form_inputs">
+                        <label for="name">Имя:</label>
+                        <input placeholder="Name" type="text" id="name" name="name" required>
+                        <label for="phone">Телефон:</label>
+                        <input placeholder="Number mz" type="tel" id="phone" name="phone" required>
+                        <button class="form_btn" type="submit">Отправить</button>
+                    </form>
+                </div>
             </div>
-            <div class="burger-menu">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
-            </div>
+            <div class="main-header_item">
+                <div class="search-button">
+                    <img src="/img/search-btn.svg" alt="Search Icon" id="searchIcon">
+                </div>
 
+                <label class="switch">
+                    <input type="checkbox" id="colorSwitcher">
+                    <span class="switch_slider">
+                        <img src="img/pizza-swiper.svg" alt="Пицца" class="pizza-img">
+                    </span>
+                </label>
+                <div class="burger-menu">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </div>
+            </div>
             <div class="overlay-menu">
                 <div class="close-menu">
                     <span></span>
@@ -61,14 +78,15 @@
         <main class="main">
             <div class="main_description">
                 <h1>Кавабанга</h1>
-                <p2>— Знаешь, что я делаю, когда тоскую о своих близких из прошлого?
+                <p>— Знаешь, что я делаю, когда тоскую о своих близких из прошлого?
                     — Нет...
                     — Я думаю о друзьях, которые окружают меня сейчас.
-
+                </p>
+                <p>
                     Иногда снова оказываешься в прошлом, иногда прошлое приходит к тебе. Эти моменты размывают границы
                     между воспоминаниями и реальностью.
 
-                    И всё же, иногда прошлое — это зеркало, в котором мы видим отражения будущих опасностей.</p2>
+                    И всё же, иногда прошлое — это зеркало, в котором мы видим отражения будущих опасностей.</p>
             </div>
             <img class="main_background" src="img/background-main.png" alt="">
         </main>
@@ -121,26 +139,38 @@
         <section class="faq">
             <h2>Часто задаваемые вопросы</h2>
             <div class="spoiler">
-                <div class="spoiler-header">— Как я выгляжу?</div>
+                <div class="spoiler-header spoilerHeader">
+                    <p>— Как я выгляжу?</p>
+                    <img class="spoiler_img" src="img/arrow-pizza.svg" alt="">
+                </div>
                 <div class="spoiler-content">— Как обычно, приятель.</div>
             </div>
 
             <div class="spoiler">
-                <div class="spoiler-header">— Эй! А где наши маски, где оружие, я что, совсем голый?</div>
+                <div class="spoiler-header spoilerHeader">
+                    <p> — Эй! А где наши маски, где оружие, я что, совсем голый?</p>
+                    <img class="spoiler_img" src="img/arrow-pizza.svg" alt="">
+                </div>
                 <div class="spoiler-content">— Ни слова больше.</div>
             </div>
 
             <div class="spoiler">
-                <div class="spoiler-header">Заголовок 3</div>
+                <div class="spoiler-header spoilerHeader">
+                    <p>>Заголовок 3</p>
+                    <img class="spoiler_img" src="img/arrow-pizza.svg" alt="">
+                </div>
                 <div class="spoiler-content">Содержимое 3</div>
             </div>
 
         </section>
         <section class="mobile-menu">
-            <button class="mobile-menu-btn">Главная</button>
-            <button class="mobile-menu-btn">Позвонить</button>
-            <button class="mobile-menu-btn">Каталог</button>
-            
+            <button class="mobile-menu-btn"><img src="/img/mobile-menu-btn3.svg"
+                    alt="Картинка в кнопке">Главная</button>
+            <button class="mobile-menu-btn"><img src="/img/mobile-menu-btn3.svg"
+                    alt="Картинка в кнопке">Позвонить</button>
+            <button class="mobile-menu-btn"><img src="/img/mobile-menu-btn3.svg"
+                    alt="Картинка в кнопке">Каталог</button>
+
         </section>
     </div>
     <div class="circle"></div>

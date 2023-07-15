@@ -20,13 +20,14 @@ closeMenu.addEventListener('click', function () {
 /* Код для формы и кнопки заявка */
 
 // Получаем ссылку на кнопку "Заявка"
-var requestButton = document.querySelector('.request-btn');
+let requestButton = document.querySelector('.request-btn');
+let popup = document.querySelector('.popup');
 
 // Получаем ссылку на всплывающую форму
-var popupForm = document.querySelector('.popup-form');
+let popupForm = document.querySelector('.popup-form');
 
 // Получаем ссылку на кнопку "Закрыть"
-var closeBtn = document.querySelector('.close-btn');
+let closeBtn = document.querySelector('.close-btn');
 
 // Скрываем форму при загрузке страницы
 popupForm.style.display = 'none';
@@ -35,6 +36,8 @@ popupForm.style.display = 'none';
 requestButton.addEventListener('click', function (event) {
   event.preventDefault();
   popupForm.style.display = 'flex';
+  popup.style.display = 'block';
+  body.classList.add('scroll-lock');
   setTimeout(function () {
     popupForm.classList.add('open');
   }, 10);
@@ -44,11 +47,25 @@ requestButton.addEventListener('click', function (event) {
 closeBtn.addEventListener('click', function (event) {
   event.preventDefault();
   popupForm.classList.remove('open');
+  popup.style.display = 'none';
+  body.classList.remove('scroll-lock');
   setTimeout(function () {
     popupForm.style.display = 'none';
-  }, 300);
+  }, 10);
   closeBtn.classList.toggle('clicked');
 });
+
+popup.addEventListener('click', function (event) {
+  event.preventDefault();
+  popupForm.classList.remove('open');
+  popup.style.display = 'none';
+  body.classList.remove('scroll-lock');
+  setTimeout(function () {
+    popupForm.style.display = 'none';
+  }, 10);
+  closeBtn.classList.toggle('clicked');
+});
+
 
 
 // Обработчик события для отправки формы
@@ -123,8 +140,8 @@ $(document).ready(function () {
 // появление хедера при скролле
 
 window.addEventListener('scroll', function () {
-  var header = document.getElementById('main-header');
-  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  let header = document.getElementById('main-header');
+  let scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
   if (scrollPosition >= 150) {
     header.classList.add('header-scroll');
@@ -137,24 +154,79 @@ window.addEventListener('scroll', function () {
 
 // выпадение спойлеров
 
-var spoilers = document.getElementsByClassName('spoiler');
+const spoilers = document.querySelectorAll('.spoiler');
 
 Array.from(spoilers).forEach(function (spoiler) {
-  var header = spoiler.querySelector('.spoiler-header');
-  var content = spoiler.querySelector('.spoiler-content');
+  let header = spoiler.querySelector('.spoiler-header');
 
   header.addEventListener('click', function () {
     spoiler.classList.toggle('active');
+    let spoilerImg = header.querySelector('.spoiler_img');
+    spoilerImg.classList.toggle('flipped');
   });
 });
+
+
 
 // скейтбордист
 
 window.addEventListener('scroll', function () {
-  var circle = document.querySelector('.circle');
-  var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-  var moveDistance = scrollPercentage * (window.innerWidth - circle.offsetWidth);
+  let circle = document.querySelector('.circle');
+  let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+  let moveDistance = scrollPercentage * (window.innerWidth - circle.offsetWidth);
   circle.style.transform = 'translateX(' + moveDistance + 'px)';
 });
+
+
+// переключатель цветовой схемы
+
+// Получаем элемент переключателя и "слайдера"
+let colorSwitcher = document.getElementById('colorSwitcher');
+let slider = document.querySelector('.switch_slider');
+
+// Обработчик события изменения состояния переключателя
+colorSwitcher.addEventListener('change', function () {
+  // Плавное перемещение "слайдера" при изменении состояния переключателя
+  if (colorSwitcher.checked) {
+    slider.style.transform = 'translateX(26px)';
+  } else {
+    slider.style.transform = 'translateX(0)';
+  }
+
+  // Инвертирование цветов на странице при включении переключателя
+  document.body.classList.toggle('invert-colors', colorSwitcher.checked);
+
+  // Вращение картинки при активации переключателя
+  let pizzaImage = document.querySelector('.pizza-img');
+  pizzaImage.classList.add('rotate-image', colorSwitcher.checked);
+  pizzaImage.classList.remove('reverse-rotate-image', colorSwitcher.checked);
+  if (!colorSwitcher.checked) {
+    pizzaImage.classList.toggle('reverse-rotate-image');
+  }
+});
+
+// кнопка поиска
+
+// Получаем ссылки на элементы
+const searchButton = document.querySelector('.search-button');
+const searchInputContainer = document.getElementById('searchInputContainer');
+
+// Обработчик события клика по кнопке поиска
+searchButton.addEventListener('click', function () {
+  // Показываем или скрываем всплывающее окно при нажатии на кнопку
+  searchInputContainer.style.display = searchInputContainer.style.display === 'block' ? 'none' : 'block';
+});
+
+// Обработчик события клика за пределами всплывающего окна
+document.addEventListener('click', function (event) {
+  const isSearchInputClicked = searchInputContainer.contains(event.target) || searchButton.contains(event.target);
+
+  if (!isSearchInputClicked) {
+    // Если клик был за пределами всплывающего окна, то скрываем его
+    searchInputContainer.style.display = 'none';
+  }
+});
+
+
 
 
