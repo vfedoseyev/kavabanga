@@ -23,9 +23,10 @@ closeMenu.addEventListener('click', function () {
 let requestButton = document.querySelector('.request-btn');
 let popup = document.querySelector('.popup');
 
+
 // Получаем ссылку на всплывающую форму
 let popupForm = document.querySelector('.popup-form');
-
+  
 // Получаем ссылку на кнопку "Закрыть"
 let closeBtn = document.querySelector('.close-btn');
 
@@ -210,11 +211,13 @@ colorSwitcher.addEventListener('change', function () {
 // Получаем ссылки на элементы
 const searchButton = document.querySelector('.search-button');
 const searchInputContainer = document.getElementById('searchInputContainer');
-
+const popup_search = document.querySelector('.popup-search');
 // Обработчик события клика по кнопке поиска
 searchButton.addEventListener('click', function () {
   // Показываем или скрываем всплывающее окно при нажатии на кнопку
   searchInputContainer.style.display = searchInputContainer.style.display === 'block' ? 'none' : 'block';
+  popup_search.style.display = 'flex';
+  body.classList.add('scroll-lock');
 });
 
 // Обработчик события клика за пределами всплывающего окна
@@ -224,6 +227,8 @@ document.addEventListener('click', function (event) {
   if (!isSearchInputClicked) {
     // Если клик был за пределами всплывающего окна, то скрываем его
     searchInputContainer.style.display = 'none';
+    popup_search.style.display = 'none';
+    body.classList.remove('scroll-lock');
   }
 });
 

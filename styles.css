@@ -10,8 +10,6 @@
 }
 
 body {
-    /* margin: 0 auto; */
-    padding-bottom: 100px;
     background: rgba(255, 255, 0, 0.3);
 }
 
@@ -298,7 +296,8 @@ header {
     border: none;
     cursor: pointer;
 }
-.popup{
+
+.popup {
     display: none;
     background: #000000ab;
     position: absolute;
@@ -308,6 +307,20 @@ header {
     height: 100%;
     z-index: 10;
 }
+
+.popup-search {
+    align-items: center;
+    justify-content: center;
+    display: none;
+    background: #000000ab;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
 .close-btn {
     position: relative;
     width: 30px;
@@ -755,6 +768,64 @@ header {
     /* Фоновый цвет для изображения пиццы */
 }
 
+/* Изменение скролл бара */
+
+/* Изменение цвета полоски прокрутки: */
+
+/* Для webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 5px;
+    background: white;
+    border-radius: 100%;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(111 180 49 / 89%);
+    border-radius: 20px;
+    /* Здесь задайте цвет, который вам нужен */
+}
+
+/* Для Firefox */
+::-moz-scrollbar {
+    width: 5px;
+}
+
+::-moz-scrollbar-thumb {
+    background-color: rgb(111 180 49 / 89%);
+
+    /* Здесь задайте цвет, который вам нужен */
+}
+
+/* Изменение размера полоски прокрутки:
+
+/* Для webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 5px;
+
+    /* Здесь задайте ширину полоски */
+}
+
+/* Для Firefox */
+::-moz-scrollbar {
+    width: 5px;
+    /* Здесь задайте ширину полоски */
+}
+
+/* Изменение стиля полоски прокрутки (например, сделать её скругленной):
+
+/* Для webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 100%;
+    /* Здесь задайте радиус скругления */
+}
+
+/* Для Firefox */
+::-moz-scrollbar {
+    width: 5px;
+    border-radius: 100%;
+    /* Здесь задайте радиус скругления */
+}
 
 /* Анимация вращения */
 @keyframes rotate360 {
@@ -801,10 +872,10 @@ header {
 }
 
 .search-input {
-    display: none;
     position: absolute;
-    top: 40px;
-    right: 10px;
+    top: 50%;
+    width: 50%;
+    display: none;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -818,6 +889,46 @@ header {
     outline: none;
 }
 
+/* footer */
+
+footer {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    background-image: linear-gradient(rgb(142 65 65 / 0%), #50a81b);
+    height: 300px;
+}
+
+.footer_menu {
+    font-size: 18px;
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer_menu li {
+    padding: 0 20px;
+    transition: all ease 0.3s;
+}
+
+.footer_menu li a {
+    text-shadow: 0 0 5px #5d5050;
+    color: white;
+}
+
+.footer_menu li a:hover {
+    text-shadow: 0 0 5px #5d5050;
+    color: rgb(164, 55, 55);
+}
+
+.footer_menu li:hover {
+
+    transform: scale(1.1);
+
+}
+
+
 
 /* медиа запросы */
 
@@ -829,6 +940,9 @@ header {
 }
 
 @media (max-width: 768px) {
+    .search-input {
+        width: 80%;
+    }
     nav {
         display: none;
     }
@@ -857,6 +971,22 @@ header {
     }
 
     @media (max-width: 480px) {
+        p {
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 26px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        .nav_footer li a {
+            font-size: 14px;
+        }
+
         .mobile-menu {
             display: flex;
             padding: 0 15px;

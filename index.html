@@ -16,9 +16,10 @@
 </head>
 
 <body>
-
-    <div class="search-input" id="searchInputContainer">
-        <input type="text" placeholder="Введите запрос" id="searchInput">
+    <div class="popup-search">
+        <div class="search-input" id="searchInputContainer">
+            <input type="text" placeholder="Введите запрос" id="searchInput">
+        </div>
     </div>
     <header id="main-header">
         <div class="header_wrapper">
@@ -82,11 +83,11 @@
                     — Нет...
                     — Я думаю о друзьях, которые окружают меня сейчас.
                 </p>
-                <p>
+                <!-- <p>
                     Иногда снова оказываешься в прошлом, иногда прошлое приходит к тебе. Эти моменты размывают границы
                     между воспоминаниями и реальностью.
 
-                    И всё же, иногда прошлое — это зеркало, в котором мы видим отражения будущих опасностей.</p>
+                    И всё же, иногда прошлое — это зеркало, в котором мы видим отражения будущих опасностей.</p> -->
             </div>
             <img class="main_background" src="img/background-main.png" alt="">
         </main>
@@ -173,6 +174,32 @@
 
         </section>
     </div>
+    <footer>
+        <div class="header_wrapper">
+            <div class="logo">
+                <img src="img/logo.png" alt="">
+            </div>
+            <div class="nav_footer">
+                <ul class="footer_menu">
+                    <li><a href="tel:+79172237476">Позвонить </a></li>
+                    <li><a href="#" class="request-btn">Заявка</a></li>
+                </ul>
+            </div>
+            <div class="popup">
+                <div class="popup-form">
+                    <button class="close-btn"></button>
+                    <h2>Заявка</h2>
+                    <form class="form_inputs">
+                        <label for="name">Имя:</label>
+                        <input placeholder="Name" type="text" id="name" name="name" required>
+                        <label for="phone">Телефон:</label>
+                        <input placeholder="Number mz" type="tel" id="phone" name="phone" required>
+                        <button class="form_btn" type="submit">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
     <div class="circle"></div>
 
 
