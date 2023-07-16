@@ -26,7 +26,7 @@ let popup = document.querySelector('.popup');
 
 // Получаем ссылку на всплывающую форму
 let popupForm = document.querySelector('.popup-form');
-  
+
 // Получаем ссылку на кнопку "Закрыть"
 let closeBtn = document.querySelector('.close-btn');
 
@@ -145,11 +145,11 @@ window.addEventListener('scroll', function () {
   let scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
   if (scrollPosition >= 150) {
-    header.classList.add('header-scroll');
     body.classList.add('body-scroll');
+    header.classList.add('header-scroll');
   } else {
-    header.classList.remove('header-scroll');
     body.classList.remove('body-scroll');
+    header.classList.remove('header-scroll');
   }
 });
 
@@ -211,26 +211,40 @@ colorSwitcher.addEventListener('change', function () {
 // Получаем ссылки на элементы
 const searchButton = document.querySelector('.search-button');
 const searchInputContainer = document.getElementById('searchInputContainer');
+const searchInput = document.getElementById('searchInput');
 const popup_search = document.querySelector('.popup-search');
+
 // Обработчик события клика по кнопке поиска
-searchButton.addEventListener('click', function () {
-  // Показываем или скрываем всплывающее окно при нажатии на кнопку
-  searchInputContainer.style.display = searchInputContainer.style.display === 'block' ? 'none' : 'block';
+searchButton.addEventListener('click', function (event) {
+  // Показываем всплывающее окно при нажатии на кнопку
+  searchInputContainer.style.display = 'block';
   popup_search.style.display = 'flex';
   body.classList.add('scroll-lock');
+
+  // Фокусируемся на инпуте для предложения ввода символов
+  searchInput.focus();
 });
 
-// Обработчик события клика за пределами всплывающего окна
-document.addEventListener('click', function (event) {
-  const isSearchInputClicked = searchInputContainer.contains(event.target) || searchButton.contains(event.target);
+// Удаление обработчика события клика за пределами всплывающего окна
+document.removeEventListener('click', outsideClickHandler);
 
-  if (!isSearchInputClicked) {
+// Обработчик события клика за пределами инпута для скрытия всплывающего окна
+function outsideClickHandler(event) {
+  if (!searchInputContainer.contains(event.target) && !searchButton.contains(event.target)) {
     // Если клик был за пределами всплывающего окна, то скрываем его
     searchInputContainer.style.display = 'none';
     popup_search.style.display = 'none';
-    body.classList.remove('scroll-lock');
   }
-});
+}
+popup_search.addEventListener('click', function (event) {
+  body.classList.remove('scroll-lock');
+  searchInputContainer.style.display = 'none';
+  popup_search.style.display = 'none';
+})
+
+// Добавление обработчика события клика за пределами инпута
+document.addEventListener('click', outsideClickHandler);
+
 
 
 
